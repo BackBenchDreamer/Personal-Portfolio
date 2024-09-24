@@ -312,42 +312,46 @@
 
         <section id="contact" class="site-section section-form text-center">
             <div class="container">
-
                 <h3>Contact</h3>
                 <img src="assets/img/lines.svg" class="img-lines" alt="lines">
-                <form>
+                <form onsubmit="sendMail(event)">
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="text" name="name" class="form-control mt-x-0" placeholder="Name" required>
+                            <input type="text" name="name" id="name" class="form-control mt-x-0" placeholder="Name" required>
                         </div>
                         <div class="col-sm-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>   
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>   
                         </div>
                         <div class="col-sm-12">
-                            <textarea name="message" id="mesaage" class="form-control" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" class="form-control" placeholder="Message" required></textarea>
                         </div>
                     </div>
-                    <button href="#" class="btn btn-border" type="submit" onclick="sendMail()">Hire Me <span class="glyphicon glyphicon-send"></span></button>
+                    <button href="#" class="btn btn-border" type="submit">Hire Me <span class="glyphicon glyphicon-send"></span></button>
                 </form>
             </div>
+            
+            <!-- Inline JavaScript -->
             <script>
-                function sendMail() {
+                function sendMail(event) {
+                    // Prevent form from submitting and reloading the page
+                    event.preventDefault();
+        
                     let params = {
                         name: document.getElementById("name").value,
                         email: document.getElementById("email").value,
                         message: document.getElementById("message").value
                     };
         
+                    // Send email via EmailJS
                     emailjs.send("service_zh03e08", "template_f1197xb", params)
                     .then(function(response) {
-                        console.log("SUCCESS!", response.status, response.text);
+                        console.log("Successfully sent!", response.status, response.text);
                     }, function(error) {
-                        console.log("FAILED...", error);
+                        console.log("FAILED TO SEND", error);
                     });
                 }
             </script>
-        </section><!-- /.section-form -->
-    
+        </section>
         
 
     </main><!-- /#main -->
