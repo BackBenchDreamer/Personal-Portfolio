@@ -329,14 +329,14 @@
         
                     <!-- Flexbox wrapper for reCAPTCHA -->
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
-                        <div class="g-recaptcha" data-sitekey="6Lepak0qAAAAAIrgjPRqy6inDH-fywyJ-cwYRTaK" data-action="LOGIN"></div>
+                        <div class="g-recaptcha" data-sitekey="6Lepak0qAAAAAIrgjPRqy6inDH-fywyJ-cwYRTaK" data-action="submit"></div>
                     </div>
                     <br>
         
                     <button href="#" class="btn btn-border" type="submit" id="submitBtn">Hire Me <span class="glyphicon glyphicon-send"></span></button>
                 </form>
             </div>
-            
+        
             <!-- Inline JavaScript -->
             <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
         
@@ -349,7 +349,7 @@
                     const submitBtn = document.getElementById('submitBtn');
                     submitBtn.disabled = true;
         
-                    // Get values from form
+                    // Get form values
                     let params = {
                         name: document.getElementById("name").value,
                         email: document.getElementById("email").value,
@@ -358,26 +358,41 @@
         
                     // Verify reCAPTCHA
                     grecaptcha.ready(function() {
-                        grecaptcha.execute('6Lepak0qAAAAAIrgjPRqy6inDH-fywyJ-cwYRTaK', {action: 'submit'}).then(function(token) {
-                            // Add the reCAPTCHA token to the params
+                        grecaptcha.execute('6Lepak0qAAAAAIrgjPRqy6inDH-fywyJ-cwYRTaK', {action: 'submit'})
+                        .then(function(token) {
+                            // Add reCAPTCHA token to params
                             params['g-recaptcha-response'] = token;
         
                             // Send email via EmailJS
                             emailjs.send("service_zh03e08", "template_f1197xb", params)
                             .then(function(response) {
-                                // Show success alert and enable the button again
+                                // Show success alert
                                 alert('Message successfully sent!');
+        
+                                // Enable the button again after success
                                 submitBtn.disabled = false;
+        
+                                // Clear form fields
+                                document.getElementById("name").value = '';
+                                document.getElementById("email").value = '';
+                                document.getElementById("message").value = '';
                             }, function(error) {
-                                // Show failure alert and enable the button again
+                                // Show failure alert
                                 alert('Failed to send the message. Please try again.');
+        
+                                // Re-enable the submit button
                                 submitBtn.disabled = false;
                             });
+                        }).catch(function(error) {
+                            // Handle reCAPTCHA error
+                            alert('reCAPTCHA verification failed. Please try again.');
+                            submitBtn.disabled = false;
                         });
                     });
                 }
             </script>
         </section>
+        
         
         
 
