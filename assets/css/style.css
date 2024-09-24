@@ -208,38 +208,60 @@ html, body {
 }
 
 /* Navigation */
-.navbar-nav > li > a {
-    padding: 5px 0;
-    font-weight: 600;
-    color: #212121;
-    text-transform: uppercase;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.25s ease-in-out;
-    -moz-transition: border-color 0.25s ease-in-out;
-    -webkit-transition: border-color 0.25s ease-in-out;
-    -o-transition: border-color 0.25s ease-in-out;
-    -ms-transition: border-color 0.25s ease-in-out;
+/* Fix alignment issue on desktop */
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
 }
 
-.navbar-nav.navbar-right {
-    margin-right: 0;
-}
-
-.navbar-nav > li + li > a {
+/* Fix spacing between nav items */
+.navbar-nav > li {
     margin-left: 40px;
 }
 
+/* Remove margin-left for the first item */
+.navbar-nav > li:first-child {
+    margin-left: 0;
+}
+
+/* Add styles for smaller screens */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar-nav > li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav > li > a {
+        padding: 10px 0;
+        border-bottom: 1px solid transparent;
+    }
+
+    /* Add a hamburger menu for mobile */
+    .navbar-collapse {
+        display: none; /* Initially hide menu */
+    }
+
+    .navbar-toggle {
+        display: block; /* Show toggle button */
+    }
+
+    .navbar-collapse.open {
+        display: block; /* Show nav items when menu is open */
+    }
+}
+
+/* Desktop hover effects */
 .navbar-nav > li > a:hover,
-.navbar-nav > li.active > a,
-.nav > li > a:hover,
-.nav > li.active > a {
+.navbar-nav > li.active > a {
     background-color: transparent;
     border-bottom: 2px solid #212121;
 }
 
-.nav > li > a:focus {
-    background-color: transparent;
-}
 
 /* HERO
 ================================================== */
@@ -267,7 +289,7 @@ html, body {
 .hero .col-md-6:last-child {
     position: relative;
     z-index: 1; /* Ensure image is behind the text */
-    margin-bottom: 20px; /* Remove spacing below image on mobile */
+
     transform: translateY(-200px); /* Move the element up by 200px */
 }
 
@@ -278,7 +300,6 @@ html, body {
     object-fit: contain;
     position: relative; /* Position within the flexbox */
     margin: 0 auto; /* Center the image horizontally */
-    margin-bottom: 40px; /* Gap below the text */
     z-index: 1; /* Ensure image is behind text */
     transform: translateY(); /* Default Y position */
 }
@@ -288,8 +309,6 @@ html, body {
     position: relative;
     z-index: 3; /* Ensure text stays above the image */
     text-align: center; /* Center text on mobile */
-    margin-top: 20px; /* Space above the text */
-    margin-bottom: 20px; /* Gap below the text */
     transform: translateY(0); /* Keep text default position */
 }
 
@@ -300,7 +319,6 @@ html, body {
     }
 
     .hero h1, .job-title, .page-scroll {
-        margin-top: 40px; /* Increase space above the text on mobile */
         transform: translateY(0); /* Keep text in the default position */
     }
 }
