@@ -208,60 +208,38 @@ html, body {
 }
 
 /* Navigation */
-/* Fix alignment issue on desktop */
-.navbar-nav {
-    display: flex;
-    justify-content: flex-end; /* Align links to the right */
+.navbar-nav > li > a {
+    padding: 5px 0;
+    font-weight: 600;
+    color: #212121;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s ease-in-out;
+    -moz-transition: border-color 0.25s ease-in-out;
+    -webkit-transition: border-color 0.25s ease-in-out;
+    -o-transition: border-color 0.25s ease-in-out;
+    -ms-transition: border-color 0.25s ease-in-out;
 }
 
-/* Fix spacing between nav items */
-.navbar-nav > li {
+.navbar-nav.navbar-right {
+    margin-right: 0;
+}
+
+.navbar-nav > li + li > a {
     margin-left: 40px;
 }
 
-/* Remove margin-left for the first item */
-.navbar-nav > li:first-child {
-    margin-left: 0;
-}
-
-/* Add styles for smaller screens */
-@media (max-width: 768px) {
-    .navbar-nav {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .navbar-nav > li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-
-    .navbar-nav > li > a {
-        padding: 10px 0;
-        border-bottom: 1px solid transparent;
-    }
-
-    /* Add a hamburger menu for mobile */
-    .navbar-collapse {
-        display: none; /* Initially hide menu */
-    }
-
-    .navbar-toggle {
-        display: block; /* Show toggle button */
-    }
-
-    .navbar-collapse.open {
-        display: block; /* Show nav items when menu is open */
-    }
-}
-
-/* Desktop hover effects */
 .navbar-nav > li > a:hover,
-.navbar-nav > li.active > a {
+.navbar-nav > li.active > a,
+.nav > li > a:hover,
+.nav > li.active > a {
     background-color: transparent;
     border-bottom: 2px solid #212121;
 }
 
+.nav > li > a:focus {
+    background-color: transparent;
+}
 
 /* HERO
 ================================================== */
