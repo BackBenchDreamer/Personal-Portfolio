@@ -324,7 +324,7 @@ html, body {
     .hero img {
         max-height: 300px; /* Increase image size for tablet */
         margin-bottom: 0; /* Remove margin when placed side by side */
-        transform: translateY(-30px); /* Adjust this value for tablet */
+        transform: translateY(200px); /* Adjust this value for tablet */
     }
     
 }
