@@ -248,48 +248,113 @@ html, body {
     height: 100%;
     width: 100%;
     min-height: 700px;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; 
+    position: relative;
 }
 
+/* Container and columns */
 .hero .container {
-    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Stack image and text vertically on small screens */
+    justify-content: center; /* Center items */
     height: 100%;
 }
 
-.hero .col-md-6:first-child {
-    position: absolute;
-    top: 35%;
-    left: 0;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    z-index: 2;
-}
-
+/* Adjust the image for mobile */
 .hero .col-md-6:last-child {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: translateY(-170px); /* Adjust this value to move the image up */
+    position: relative;
+    z-index: 1; /* Ensure image is behind the text */
+    margin-bottom: 20px; /* Remove spacing below image on mobile */
+    transform: translateY(-200px); /* Move the element up by 200px */
 }
 
-.hero h1 {
-    font-size: 46px;
-    font-weight: 700;
-    margin: 0 0 15px;
-    text-transform: uppercase;
-}
-
-.job-title {
-    font-size: 22px;
-    margin-bottom: 30px;
-    line-height: 1;
-} 
-
+/* Image styles */
 .hero img {
-    height: 300px;
+    max-height: 200px; /* Smaller image on mobile */
+    width: auto;
+    object-fit: contain;
+    position: relative; /* Position within the flexbox */
+    margin: 0 auto; /* Center the image horizontally */
+    margin-bottom: 40px; /* Gap below the text */
+    z-index: 1; /* Ensure image is behind text */
+    transform: translateY(); /* Default Y position */
+}
+
+/* Text styles */
+.hero h1, .job-title, .page-scroll {
+    position: relative;
+    z-index: 3; /* Ensure text stays above the image */
+    text-align: center; /* Center text on mobile */
+    margin-top: 20px; /* Space above the text */
+    margin-bottom: 20px; /* Gap below the text */
+    transform: translateY(0); /* Keep text default position */
+}
+
+@media (max-width: 767px) {
+    /* Additional adjustments for mobile view */
+    .hero img {
+        transform: translateY(-50px); /* Adjust this value for mobile to shift image up */
+    }
+
+    .hero h1, .job-title, .page-scroll {
+        margin-top: 40px; /* Increase space above the text on mobile */
+        transform: translateY(0); /* Keep text in the default position */
+    }
+}
+
+@media (min-width: 768px) {
+    /* For tablet size, switch to horizontal layout */
+    .hero {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hero .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hero .col-md-6:first-child {
+        text-align: left; /* Align text to the left on tablet size */
+    }
+
+    .hero img {
+        max-height: 300px; /* Increase image size for tablet */
+        margin-bottom: 0; /* Remove margin when placed side by side */
+        transform: translateY(-30px); /* Adjust this value for tablet */
+    }
     
+}
+
+@media (min-width: 1024px) {
+    /* For larger screens, push the image fully to the right */
+    .hero img {
+        max-height: 350px; /* Larger image on desktop */
+        transform: translateY(-40px); /* Adjust this value for larger screens */
+    }
+
+    .hero .col-md-6:last-child {
+        position: relative;
+        margin-right: 0; /* Align the image to the right edge */
+        transform: translateX(10%); /* Move image further to the right */
+    }
+}
+
+@media (min-width: 1600px) {
+    /* For screens 1600px and wider, push the image fully to the right */
+    .hero img {
+        max-height: 400px; /* Larger image on desktop */
+        transform: translateY(0); /* Adjust this value for very large screens */
+    }
+
+    .hero .col-md-6:last-child {
+        position: relative;
+        margin-right: 0; /* Align the image to the right edge */
+        transform: translateX(40%); /* Move image further to the right */
+    }
 }
 
 /* SITEMAIN
