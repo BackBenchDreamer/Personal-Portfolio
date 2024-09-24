@@ -387,7 +387,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
-                    <p class="copyright">2024. All Rights Reserved</p>
+                    <p class="copyright">&#169; 2024. All Rights Reserved</p>
                 </div>
                 <div class="col-sm-4 col-xs-3">
                     <div class="text-right page-scroll">
@@ -519,6 +519,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.querySelector('.navbar-toggle');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            toggleButton.addEventListener('click', function() {
+                navbarCollapse.classList.toggle('open');
+            });
+        });
+    </script>
+    
   
 </body>
 </html>
