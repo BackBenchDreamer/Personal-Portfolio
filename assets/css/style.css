@@ -620,6 +620,94 @@ html, body {
     margin-top: 40px;
 }
 
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #212121; /* Match the color scheme of your site */
+    padding: 15px 10px;
+    border-radius: 8px 0 0 8px; /* Rounded corners on the left */
+    z-index: 1000; /* Make sure the sidebar stays on top */
+    width: 50px; /* Fixed width for the sidebar */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+/* Show sidebar when it becomes visible */
+.sidebar.visible {
+    opacity: 1; /* Fully visible */
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+/* Sidebar icon container */
+.sidebar a {
+    display: block;
+    margin-bottom: 20px; /* Space between icons */
+    text-align: center;
+}
+
+/* Sidebar icons */
+.sidebar img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect for icons */
+.sidebar a:hover img {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    opacity: 0.8; /* Slightly reduce opacity on hover */
+}
+
+/* Up icon styling */
+.sidebar .icon {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 40px; /* Fixed width for the icon */
+    height: 40px; /* Fixed height for the icon */
+    line-height: 40px; /* Match height for perfect vertical centering */
+    padding: 0; /* No additional padding */
+    color: #fff; /* Icon color */
+    border: 1px solid #fff; /* Border styling */
+    border-radius: 50%; /* Rounded icon */
+    margin-top: auto; /* Push to bottom */
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out; /* Transition effects */
+}
+
+/* Up icon element styling */
+.sidebar .icon-up {
+    font-size: 24px; /* Size of the icon */
+    line-height: 1; /* Reset line height to avoid misalignment */
+}
+
+/* Up icon hover effect */
+.sidebar .icon-up-bg:hover {
+    background-color: #fff; /* Background on hover */
+    color: #212121; /* Icon color on hover */
+}
+
+/* Matching colors for the hover state of the logos */
+.sidebar a.linkedin-bg:hover img {
+    color: #0077b5; /* LinkedIn color */
+}
+
+.sidebar a.instagram-bg:hover img {
+    color: #E4405F; /* Instagram color */
+}
+
+.sidebar a.leetcode-bg:hover img {
+    color: #fcbf32; /* LeetCode color */
+}
+
+.sidebar a.github-bg:hover img {
+    color: #333; /* GitHub color */
+}
+
+
 /* FOOTER
 ================================================== */
 .site-footer {

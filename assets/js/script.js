@@ -90,3 +90,16 @@ $(function() {
         }
     });
 });
+
+document.addEventListener('scroll', function() {
+    const sidebar = document.querySelector('.sidebar'); // Select the sidebar
+    const heroSection = document.querySelector('#hero'); // Select the hero section
+    const heroSectionHeight = heroSection.offsetHeight; // Get the height of the hero section
+
+    // Check if the scroll position is greater than the hero section height
+    if (window.scrollY > heroSectionHeight) {
+        sidebar.classList.add('visible'); // Add class to show the sidebar
+    } else {
+        sidebar.classList.remove('visible'); // Remove class to hide the sidebar
+    }
+});
